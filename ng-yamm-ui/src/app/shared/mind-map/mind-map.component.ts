@@ -1,5 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { MindMapNode } from '../../model';
+import { CommonHttpService } from 'src/app/service/common-http.service';
 
 @Component({
   selector: 'app-mind-map',
@@ -7,6 +8,11 @@ import { MindMapNode } from '../../model';
   styleUrls: ['./mind-map.component.css']
 })
 export class MindMapComponent implements OnInit{
+
+  constructor(private commonHttpService: CommonHttpService){
+    
+  }
+
   ngOnInit(): void {
     this.nodes.push({id:1, text: 'first'});
   }
@@ -56,6 +62,13 @@ export class MindMapComponent implements OnInit{
       text: target.innerText.trim(),
       children: []
     };
+    // const headers = new Headers({
+    //   'Content-Type': 'application/json'
+    // });
+    // this.commonHttpService.post<MindMapNode>('/api/models', newNode, headers)
+    //   .subscribe((response: MindMapNode) => {
+    //     console.log(response);
+    // });
     this.nodes.push(newNode);
     this.selectedNode = newNode;
     target.focus();

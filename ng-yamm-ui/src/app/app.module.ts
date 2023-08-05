@@ -6,7 +6,9 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
-import { MindMapComponent } from './shared/mind-map/mind-map.component';
+import { MindMapCollaborationService } from './service/mind-map-collaboration.service';
+import { CommonHttpService } from './service/common-http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,9 +19,10 @@ import { MindMapComponent } from './shared/mind-map/mind-map.component';
     AppRoutingModule,
     FormsModule,
     CommonModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientModule,MindMapCollaborationService,CommonHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

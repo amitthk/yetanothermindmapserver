@@ -1,0 +1,9 @@
+<div class="mind-map">
+    <ul *ngIf="nodes!=null">
+      <li *ngFor="let node of nodes" [class.selected]="selectedNode === node" contenteditable (blur)="updateNodeText($event)">
+        {{ node.text }}
+        <app-mind-map *ngIf="node.children!=null && selectedNode !=null" [nodes]="node.children"></app-mind-map>
+      </li>
+    </ul>
+  </div>
+  
